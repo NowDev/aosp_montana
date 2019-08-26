@@ -216,7 +216,7 @@ PRODUCT_PACKAGES += \
 
 # health
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-service.cedric
+    android.hardware.health@2.0-service.montana
 
 # IPACM
 PRODUCT_PACKAGES += \
@@ -244,7 +244,7 @@ PRODUCT_PACKAGES += \
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-impl \
-    android.hardware.light@2.0-service.cedric \
+    android.hardware.light@2.0-service.montana \
     lights.msm8937
 
 #PRODUCT_COPY_FILES += \
@@ -309,7 +309,7 @@ PRODUCT_PACKAGES += \
     init.mmi.boot.sh \
     init.mmi.laser.sh \
     init.mmi.rc \
-    init.cedric.rc \
+    init.montana.rc \
     init.mmi.usb.rc \
     init.qcom.rc \
     init.qcom.ril.sh
@@ -368,7 +368,7 @@ PRODUCT_PACKAGES += \
 
 # Thermal
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine-cedric.conf:system/vendor/etc/thermal-engine.conf
+    $(LOCAL_PATH)/configs/thermal-engine-montana.conf:system/vendor/etc/thermal-engine.conf
 
 # TextClassifier smart selection model files
 PRODUCT_PACKAGES += \
@@ -376,12 +376,12 @@ PRODUCT_PACKAGES += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service.cedric
+    android.hardware.usb@1.0-service.montana
 
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
-    android.hardware.vibrator@1.0-service.cedric
+    android.hardware.vibrator@1.0-service.montana
 
 PRODUCT_PACKAGES += \
     vndk-sp

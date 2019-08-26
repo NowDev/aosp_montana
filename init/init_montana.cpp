@@ -31,12 +31,11 @@
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 #include <sys/sysinfo.h>
-#include <android-base/logging.h>
 #include <android-base/properties.h>
 #include "property_service.h"
+#include "vendor_init.h"
 
-namespace android {
-namespace init {
+using android::init::property_set;
 
 void property_override(char const prop[], char const value[])
 {
@@ -61,7 +60,9 @@ void check_device()
 {
     struct sysinfo sys;
     sysinfo(&sys);
-    if (sys.totalram > 2048ull * 1024 * 1024) {
+    if (sys.totalram > 3072ull * 1024 * 1024) {
+        property_set("ro.boot.ram", "4GB");
+    } else if (sys.totalram > 2048ull * 1024 * 1024) {
         property_set("ro.boot.ram", "3GB");
     } else {
         property_set("ro.boot.ram", "2GB");
@@ -89,8 +90,10 @@ void vendor_load_properties()
         return;
 
     // sku
-    std::string sku = android::base::GetProperty("ro.boot.hardware.sku", "");
-    property_override_dual("ro.product.model", "ro.vendor.product.model", sku.c_str());
+    std::string sku = "Moto G5S (";
+    sku.append(android::base::GetProperty("ro.boot.hardware.sku", ""));
+    sku.append(")");
+    property_override_dual("ro.product.model","ro.vendor.product.model", sku.c_str());
 
     // rmt_storage
     std::string device = android::base::GetProperty("ro.boot.device", "");
@@ -98,10 +101,7 @@ void vendor_load_properties()
     property_set("ro.vendor.hw.device", device.c_str());
     property_set("ro.vendor.hw.radio", radio.c_str());
     property_set("ro.hw.fps", "true");
-    property_set("ro.hw.imager", "13MP");
-
+    property_set("ro.hw.imager", "16MP");
     num_sims();
 
 }
-}  // namespace init
-} // namespace android

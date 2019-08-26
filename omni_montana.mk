@@ -45,8 +45,8 @@ TARGET_BOOTANIMATION_SIZE := 1080p
 $(call inherit-product, vendor/omni/config/common.mk)
 
 # Inherit from those products. Most specific first.
-$(call inherit-product, device/motorola/cedric/device.mk)
-$(call inherit-product, vendor/motorola/cedric/cedric-vendor.mk)
+$(call inherit-product, device/motorola/montana/device.mk)
+$(call inherit-product, vendor/motorola/montana/montana-vendor.mk)
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080
@@ -56,8 +56,8 @@ TARGET_SCREEN_HEIGHT := 1920
 PRODUCT_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := cedric
-PRODUCT_NAME := omni_cedric
+PRODUCT_DEVICE := montana
+PRODUCT_NAME := omni_montana
 PRODUCT_BRAND := motorola
 PRODUCT_MANUFACTURER := motorola
 
@@ -67,7 +67,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="Moto G5"
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="cedric-user 8.1.0 OPPS28.85-13-2 d04a4 release-keys"
+    PRIVATE_BUILD_DESC="blueline-user 9 PQ3A.190801.002 5670241 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := motorola/cedric/cedric:8.1.0/OPPS28.85-13-2/d04a4:user/release-keys
+BUILD_FINGERPRINT := google/blueline/blueline:9/PQ3A.190801.002/5670241:user/release-keys 
